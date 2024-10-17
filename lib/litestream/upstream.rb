@@ -6,6 +6,7 @@ module Litestream
     NATIVE_PLATFORMS = {
       "arm64-darwin" => "litestream-#{VERSION}-darwin-arm64.zip",
       "arm64-linux" => "litestream-#{VERSION}-linux-arm64.tar.gz",
+      "aarch64-linux" => "litestream-#{VERSION}-linux-arm64.tar.gz",
       "x86_64-darwin" => "litestream-#{VERSION}-darwin-amd64.zip",
       "x86_64-linux" => "litestream-#{VERSION}-linux-amd64.tar.gz"
     }
