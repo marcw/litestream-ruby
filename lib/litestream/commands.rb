@@ -47,13 +47,17 @@ module Litestream
           end
 
           exe_file = Dir.glob(File.expand_path(File.join(exe_path, "*", "litestream"))).find do |f|
+            puts "Checking #{f}"
+            puts "Platform: #{Gem::Platform.new(File.basename(File.dirname(f)))}"
+            puts "GEM_NAME: #{GEM_NAME}"
+            puts "Match: #{Gem::Platform.match_gem?(Gem::Platform.new(File.basename(File.dirname(f))), GEM_NAME)}"
             Gem::Platform.match_gem?(Gem::Platform.new(File.basename(File.dirname(f))), GEM_NAME)
           end
         end
 
         if exe_file.nil? || !File.exist?(exe_file)
           raise ExecutableNotFoundException, <<~MESSAGE
-            Cannot find the litestream executable #{exe_file.inspect} for #{platform} in #{exe_path}
+            Cannot find the litestream executable '#{exe_file.inspect}' for #{platform} in #{exe_path}
 
             If you're using bundler, please make sure you're on the latest bundler version:
 
